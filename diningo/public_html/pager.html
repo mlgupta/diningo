@@ -1,0 +1,27 @@
+	      <table id="nagigation" border="0" cellspacing="1" cellpadding="1">
+              <pg:index>
+              <tr>
+                <td  align="right">
+                  <pg:prev>&nbsp;<a href="<%= pageUrl %>"><img src="images/btn_previous.gif" alt="Previous Page" title="Previous Page" width="35" height="27"></a></pg:prev>
+                </td>
+                <td  align="right">
+                   <span class="textLinkNormal">
+                   <pg:pages>
+                     <logic:lessThan name="<%=currentPageNumber.toString()%>" value="10">
+                          &nbsp;
+                     </logic:lessThan>
+                     <logic:equal name="<%=currentPageNumber.toString()%>" value="<%=pageNumber.toString()%>">
+                       <b><%=pageNumber%></b>
+                     </logic:equal>
+                     <logic:notEqual name="<%=currentPageNumber.toString()%>" value="<%=pageNumber.toString()%>">
+                       <a href="<%= pageUrl %>"><%= pageNumber %></a>
+                     </logic:notEqual>
+                   </pg:pages>
+                   </span>
+                </td>
+                <td align="right">
+                  <pg:next>&nbsp;<a href="<%= pageUrl %>"><img src="images/btn_next.gif" alt="Next Page" title="Next Page" width="35" height="27"></a></pg:next>
+                </td>
+              </tr>  
+              </pg:index>
+              </table>

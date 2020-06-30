@@ -1,0 +1,361 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>DiningO</title>
+<link href="main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<body onLoad="MM_preloadImages('images/btn_contactus_over.gif','images/btn_home_over.gif','images/box_explore_over.gif','images/box_freesignup_over.gif','images/box_ownarestaurant_over.gif')">
+<br>
+<table width="900px" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="bdrLftClr_Lvl_2 bdrRgtClr_Lvl_2 bdrTopClr_Lvl_2">
+  <tr>
+    <td height="90px" style="background-image: url(images/bar_top_tile90.gif)">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="46%" height="90px" valign="top">
+		<a href="http://www.DininGo.com">
+		<img src="images/logo_diningo.gif" alt="Your Nearest Dining Destination" title="Your Nearest Dining Destination" width="200" height="80" border="0"></a></td>
+        <td width="54%" align="right">
+		<a href="index.html" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('home','','images/btn_home_over.gif',1)">
+		<img src="images/btn_home.gif" alt="Home" name="home" width="60" height="33" border="0"></a>
+		<a href="ContactUsB4Action.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('contactus','','images/btn_contactus_over.gif',1)">								<img src="images/btn_contactus.gif" alt="Contact Us" name="contactus" width="97" height="33" border="0" style="margin-right:25px">		</a></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <table width="100%" border="0" cellspacing="1" cellpadding="1">
+      <tr>
+        <td width="57%" align="center" valign="top">
+          <table width="93%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td height="40" align="left" class="textHeading1">Your Nearerst Dining Destination </td>
+          </tr>
+          <tr>
+            <td height="60" valign="top" style="text-align:justify">Welcome to DininGo.com, a website to help you decide where to eat today! You'll find this website very useful when you face all-too-common questions like, <span class="txtHighlight">&ldquo;where are we going for lunch today?&rdquo;</span><br>              
+              <br></td>
+          </tr>
+          <tr>
+            <td height="125" align="center"><a href="ExploreDinerB4Action.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Explore','','images/box_explore_over.gif',1)"><img src="images/box_explore.gif" alt="Explore What It Is!" name="Explore" width="419" height="113" border="0"></a></td>
+          </tr>
+          <tr>
+            <td height="125" align="center"><a href="ExploreDinerB4Action.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('SignUp','','images/box_freesignup_over.gif',1)"><img src="images/box_freesignup.gif" alt="Free SignUp" name="SignUp" width="419" height="113" border="0"></a></td>
+          </tr>
+          <tr>
+            <td height="125" align="center"><a href="ExploreOwnerB4Action.do" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Restaurant','','images/box_ownarestaurant_over.gif',1)"><img src="images/box_ownarestaurant.gif" alt="Own A Restaurant ?" name="Restaurant" width="419" height="113" border="0"></a></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+        </td>
+        <td width="43%" align="center" valign="top">
+	 <table width="100%" border="0" cellspacing="1" cellpadding="1">
+          <tr>
+            <td height="500" valign="top" class="bdrLftClr_Lvl_2">
+              <table width="100%" border="0" cellspacing="1" cellpadding="1">
+              <tr>
+                <td>
+                 <form name="RestaurantSearchForm" method="post" action="RestaurantSearchListAction.do">
+                 <input name="cboMeals" type="hidden" value="2">
+                 <table width="100%" border="0" align="center" cellspacing="1" cellpadding="1" style="margin-top:5px; margin-bottom:50px; margin:2px" class="txtBoxThick">
+                 <tr>
+                   <td colspan="2" align="center">
+                   <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                   <tr>
+                     <td colspan="3" align="center" class="textHeading1" style="margin:5px">Search Restaurants</td>
+                   </tr>
+                   <tr>
+                     <td>&nbsp;</td>
+                     <td align="left" style="margin:10px"><b>Tip:</b> Enter as much information as you can to get a list of restaurants and their specials.</td>
+                     <td>&nbsp;</td>
+                   </tr>  
+                   </table>
+                   </td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">&nbsp;</td>
+                 </tr>
+                 <tr>
+                   <td width="30%" align="right"><span class="txtHighlight">Restaurant: </span></td>
+                   <td width="70%" align="left"><input name="txtName" type="text" value="" class="txtBox1" style="width:175px"></td>
+                 </tr>
+                 <tr>
+                   <td align="right"><span class="txtHighlight">City: </span></td>
+                   <td align="left"><input name="cboCity" type="text" value="" class="txtBox1" style="width:175px"></td>
+                 </tr>
+                 <tr>
+                   <td align="right"><span class="txtHighlight">State: </span></td>
+                <td width="50px"  align="left">
+                  <select name="cboState" class="txtBox1"><option value=""></option>
+                     <option value="1">AL</option>
+                     <option value="2">AK</option>
+                     <option value="3">AZ</option>
+                     <option value="4">AR</option>
+                     <option value="5">CA</option>
+                     <option value="6">CO</option>
+                     <option value="7">CT</option>
+                     <option value="8">DE</option>
+                     <option value="9">DC</option>
+                     <option value="10">FL</option>
+                     <option value="11">GA</option>
+                     <option value="12">HI</option>
+                     <option value="13">ID</option>
+                     <option value="14">IL</option>
+                     <option value="15">IN</option>
+                     <option value="16">IA</option>
+                     <option value="17">KS</option>
+                     <option value="18">KY</option>
+                     <option value="19">LA</option>
+                     <option value="20">ME</option>
+                     <option value="21">MD</option>
+                     <option value="22">MA</option>
+                     <option value="23">MI</option>
+                     <option value="24">MN</option>
+                     <option value="25">MS</option>
+                     <option value="26">MO</option>
+                     <option value="27">MT</option>
+                     <option value="28">NE</option>
+                     <option value="29">NV</option>
+                     <option value="30">NH</option>
+                     <option value="31">NJ</option>
+                     <option value="32">NM</option>
+                     <option value="33">NY</option>
+                     <option value="34">NC</option>
+                     <option value="35">ND</option>
+                     <option value="36">OH</option>
+                     <option value="37">OK</option>
+                     <option value="38">OR</option>
+                     <option value="39">PA</option>
+                     <option value="40">RI</option>
+                     <option value="41">SC</option>
+                     <option value="42">SD</option>
+                     <option value="43">TN</option>
+                     <option value="44">TX</option>
+                     <option value="45">UT</option>
+                     <option value="47">VA</option>
+                     <option value="46">VT</option>
+                     <option value="48">WA</option>
+                     <option value="49">WV</option>
+                     <option value="50">WI</option>
+                     <option value="51">WY</option></select>
+                </td>
+                 </tr>
+                 <tr>
+                   <td align="right"><span class="txtHighlight">Zip: </span></td>
+                   <td align="left"><input name="cboZipCode" type="text" value="" class="txtBox1" style="width:50px"></td>
+                 </tr>
+                 <tr>
+                   <td>&nbsp;</td>
+                   <td align="left"><input type="submit" value="&nbsp;" class="button_find" alt="Find special in your area" title="Find special in your area"></td>
+                 </tr>
+                 <tr>
+                   <td colspan="2">&nbsp;</td>
+                 </tr>
+                 </table>
+                 </form>
+                </td>
+              </tr>
+              <tr>
+               <td valign="bottom" align="left" class="textHeading1 bdrBtmClr_Lvl_2">Featured Cities:</td>
+              </tr>
+              <tr>
+               <td align="center">
+                <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                <tr>
+                 <td width="1%"></td>
+                 <td width="22%" align="left"><span class="textLinkNormal">
+                   Atlanta<br>
+                   Austin<br>
+                   <a href="RestaurantSearchListAction.do?metroArea=03&cboMeals=2">Baltimore</a><br>
+                   Boston<br>
+                   Chicago<br>
+                   Dallas
+                   </span>
+                 </td>
+                 <td width="25%" align="left"><span class="textLinkNormal">
+                   Denver<br>
+                   Houston<br>
+                   Las Vegas<br>
+                   Los Angeles<br>
+                   Miami<br>
+                   Minneapolis
+                   </span>
+                 </td>
+                 <td width="25%" align="left"><span class="textLinkNormal">
+                   New York<br>
+                   Philadelphia<br>
+                   Phoenix<br>
+                   Portland<br>
+                   Raleigh<br>
+                   Sacramento
+                   </span>
+                 </td>
+                 <td width="27%" align="left"><span class="textLinkNormal">
+                   San Diego<br>
+                   Seattle<br>
+                   San Fransisco<br>
+                   <a href="RestaurantSearchListAction.do?metroArea=22&cboMeals=2">Wash DC</a><br>
+                   &nbsp;<br>
+                   &nbsp;
+                   </span>
+                 </td>
+                </tr>
+                </table>
+               </td>
+              </tr>
+              <tr>
+               <td valign="bottom" align="left" class="textHeading1 bdrBtmClr_Lvl_2">States:</td>
+              </tr>
+              <tr>
+               <td align="center">
+                <table width="100%" border="0" cellspacing="1" cellpadding="1">
+                <tr>
+                 <td width="1%"></td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   AL<br>
+                   AK<br>
+                   AZ<br>
+                   AR<br>
+                   CA<br>
+                   CO<br>
+                   CT<br>
+                   DE<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   <a href="RestaurantSearchListAction.do?cboState=09&cboMeals=2">DC</a><br>
+                   FL<br>
+                   GA<br>
+                   HI<br>
+                   ID<br>
+                   IL<br>
+                   IN<br>
+                   IA<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   KS<br>
+                   KY<br>
+                   LA<br>
+                   ME<br>
+                   <a href="RestaurantSearchListAction.do?cboState=21&cboMeals=2">MD</a><br>
+                   MA<br>
+                   MI<br>
+                   MN<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   MS<br>
+                   MO<br>
+                   MT<br>
+                   NE<br>
+                   NV<br>
+                   NH<br>
+                   NJ<br>
+                   NM<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   NY<br>
+                   NC<br>
+                   ND<br>
+                   OH<br>
+                   OK<br>
+                   OR<br>
+                   PA<br>
+                   RI<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   SC<br>
+                   SD<br>
+                   TN<br>
+                   TX<br>
+                   UT<br>
+                   <a href="RestaurantSearchListAction.do?cboState=47&cboMeals=2">VA</a><br>
+                   VT<br>
+                   WA<br>
+                   </span>
+                 </td>
+                 <td width="12%" align="left"><span class="textLinkNormal">
+                   WV<br>
+                   WI<br>
+                   WY<br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   </span>
+                 </td>
+                 <td width="15%" align="left"><span class="textLinkNormal">
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   <br>
+                   </span>
+                 </td>
+                </tr>
+                </table>
+               </td>
+              </tr>
+            </table></td>
+          </tr>
+        </table>
+        </td>
+      </tr>
+    </table></td>
+  </tr>
+  
+</table>
+<table width="900px" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="28px" align="center" style="background-image: url(images/bar_btm_tile28.gif)" class="bdrLftClr_Lvl_2 bdrRgtClr_Lvl_2 bdrBtmClr_Lvl_2">
+	<a class="footerMenu" href="index.html">Home</a> | 
+	<a class="footerMenu" href="faq.html">FAQ</a> | 
+	<a class="footerMenu" href="copyright.html">Copyright</a> | 
+	<a class="footerMenu" href="privacy_policy.html">Privacy</a> | 
+	<a class="footerMenu" href="terms_of_use.html">Terms Of Use</a> | 
+	<a class="footerMenu" href="ContactUsB4Action.do">Contact Us</a>	</td>
+  </tr>
+  <tr>
+    <td height="20px" align="center" class="textCopyRight">Copyright &copy; 2006, DBSentry Corp. All rights reserved. &nbsp;&nbsp;&nbsp;(Best viewed in 1024 x 768 screen resolution)</td>
+  </tr>
+</table>
+</body>
+</html>

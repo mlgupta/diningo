@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <form-beans>
+     <form-bean name="ContactUsForm"                type="com.diningo.web.commons.actionforms.ContactUsForm"/>
+     <form-bean name="ExploreDinerForm"             type="com.diningo.web.commons.actionforms.ExploreDinerForm"/>
+     <form-bean name="ExploreOwnerForm"             type="com.diningo.web.commons.actionforms.ExploreOwnerForm"/>     
+     <form-bean name="RestaurantSearchForm"         type="com.diningo.web.restaurant.actionforms.RestaurantSearchForm"/>     
+     <form-bean name="DinersCouponsForm"            type="com.diningo.web.restaurant.actionforms.DinersCouponsForm"/>     
+     <form-bean name="PrintCouponForm"              type="com.diningo.web.restaurant.actionforms.PrintCouponForm"/>          
+     <form-bean name="RestaurantListForm"           type="com.diningo.web.restaurant.actionforms.RestaurantListForm"/>               
+     <form-bean name="RestaurantSelectListForm"     type="com.diningo.web.restaurant.actionforms.RestaurantSelectListForm"/>               
+     <form-bean name="RestaurantNewEditForm"        type="com.diningo.web.restaurant.actionforms.RestaurantNewEditForm"/>
+     <form-bean name="RestaurantUserNewEditForm"    type="com.diningo.web.users.actionforms.RestaurantUserNewEditForm"/>
+     <form-bean name="RestaurantSpecialsForm"       type="com.diningo.web.restaurant.actionforms.RestaurantSpecialsForm"/>
+     <form-bean name="RestaurantCouponsForm"        type="com.diningo.web.restaurant.actionforms.RestaurantCouponsForm"/>
+     <form-bean name="RestaurantEventsForm"         type="com.diningo.web.restaurant.actionforms.RestaurantEventsForm"/>
+     <form-bean name="AgentForm"                    type="com.diningo.web.users.actionforms.AgentForm"/>
+     <form-bean name="CategoryForm"                 type="com.diningo.web.category.actionforms.CategoryForm"/>
+     <form-bean name="ReviewDinersForm"             type="com.diningo.web.reports.actionforms.ReviewDinersForm"/>
+     <form-bean name="AgentCommissionReportForm"    type="com.diningo.web.reports.actionforms.AgentCommissionReportForm"/>
+     <form-bean name="SubscriptionExpiryReportForm" type="com.diningo.web.reports.actionforms.SubscriptionExpiryReportForm"/> 
+     <form-bean name="PreferencesForm"              type="com.diningo.web.preferences.actionforms.PreferencesForm"/> 
+     <form-bean name="LoginForm"                    type="com.diningo.web.loginout.actionforms.LoginForm"/>      
+     <form-bean name="RestaurantSubscriptionForm"   type="com.diningo.web.restaurant.actionforms.RestaurantSubscriptionForm"/>      
+ </form-beans>
+  
+  <global-forwards>
+    <forward name="welcome" path="/LoginB4Action.do"/>
+  </global-forwards>
+  
+  <action-mappings>
+    <action path="/LoginB4Action" 
+            name="LoginForm" 
+            type="com.diningo.web.loginout.actions.LoginB4Action"
+            scope="request"
+            validate="false" 
+            unknown="true">
+            <forward name="success" path="/login.jsp"/>
+    </action>    
+    <action path="/LoginAction" 
+            name="LoginForm" 
+            type="com.diningo.web.loginout.actions.LoginAction" 
+            scope="request"
+            input="/login.jsp" 
+            validate="true">
+      <forward name="success" path="/UserHomeAction.do"/>
+      <forward name="failure" path="/LoginB4Action.do"/>
+    </action>
+    <action path="/LogoutAction" 
+            type="com.diningo.web.loginout.actions.LogoutAction" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/LoginB4Action.do"/>
+      <forward name="failure" path="/LoginB4Action.do"/>
+    </action>
+    <action path="/errorNotAuthorized" 
+            scope="request"
+            validate="false"
+            forward="/not_authorized.html"/>
+    <action path="/UserHomeAction" 
+            scope="request"
+            validate="false"
+            roles="ADMIN, AGENT, OWNER"
+            forward="/user_home.jsp"/>
+    <action path="/AgentListAction" 
+            type="com.diningo.web.users.actions.AgentListAction"
+            name="AgentForm"
+            scope="request" 
+            roles="ADMIN"
+            validate="false">
+            <forward name="success" path="/agent_list.jsp"/>
+    </action>    
+    <action path="/AgentAddAction" 
+            type="com.diningo.web.users.actions.AgentAddAction" 
+            name="AgentForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/agent_list.jsp"
+            validate="true">
+      <forward name="success" path="/AgentListAction.do?reset=true"/>
+      <forward name="failure" path="/AgentListAction.do"/>
+    </action>
+    <action path="/AgentEditAction" 
+            type="com.diningo.web.users.actions.AgentEditAction" 
+            name="AgentForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/agent_list.jsp"
+            validate="false">
+      <forward name="success" path="/AgentListAction.do"/>
+      <forward name="failure" path="/AgentListAction.do"/>
+    </action>
+    <action path="/AgentDeleteAction" 
+            type="com.diningo.web.users.actions.AgentDeleteAction" 
+            name="AgentForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/agent_list.jsp"
+            validate="false">
+      <forward name="success" path="/AgentListAction.do"/>
+      <forward name="failure" path="/AgentListAction.do"/>
+    </action>
+    <action path="/CategoryListAction" 
+            type="com.diningo.web.category.actions.CategoryListAction"
+            name="CategoryForm"
+            scope="request"
+            roles="ADMIN"
+            validate="false">
+            <forward name="success" path="/restaurant_category_setup.jsp"/>
+    </action>    
+    <action path="/CategoryAddAction" 
+            type="com.diningo.web.category.actions.CategoryAddAction" 
+            name="CategoryForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_category_setup.jsp"
+            validate="true">
+      <forward name="success" path="/CategoryListAction.do?reset=true"/>
+      <forward name="failure" path="/CategoryListAction.do"/>
+    </action>
+    <action path="/CategoryEditAction" 
+            type="com.diningo.web.category.actions.CategoryEditAction" 
+            name="CategoryForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_category_setup.jsp"
+            validate="false">
+      <forward name="success" path="/CategoryListAction.do"/>
+      <forward name="failure" path="/CategoryListAction.do"/>
+    </action>
+    <action path="/CategoryDeleteAction" 
+            type="com.diningo.web.category.actions.CategoryDeleteAction" 
+            name="CategoryForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_category_setup.jsp"
+            validate="false">
+      <forward name="success" path="/CategoryListAction.do"/>
+      <forward name="failure" path="/CategoryListAction.do"/>
+    </action>
+    <action path="/RestaurantListAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantListAction"
+            name="RestaurantListForm"
+            scope="request"
+            roles="ADMIN"
+            validate="false">
+            <forward name="success" path="/restaurant_management.jsp"/>
+    </action>    
+    <action path="/RestaurantB4NewEditAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantB4NewEditAction" 
+            name="RestaurantListForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_management.jsp"
+            validate="false">
+      <forward name="success" path="/RestaurantListAction.do"/>
+      <forward name="failure" path="/RestaurantListAction.do"/>
+    </action>
+    <action path="/RestaurantNewEditAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantNewEditAction" 
+            name="RestaurantListForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_management.jsp"
+            validate="true">
+      <forward name="success" path="/RestaurantListAction.do?reset=true"/>
+      <forward name="failure" path="/restaurant_management.jsp"/>
+    </action>
+    <action path="/RestaurantDeleteAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantDeleteAction" 
+            name="RestaurantListForm" 
+            scope="request"
+            roles="ADMIN"
+            input="/restaurant_management.jsp"
+            validate="false">
+      <forward name="success" path="/RestaurantListAction.do"/>
+      <forward name="failure" path="/RestaurantListAction.do"/>
+    </action>
+    
+    <action path="/RestaurantSelectListAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSelectListAction"
+            name="RestaurantSelectListForm"
+            scope="session"
+            roles="ADMIN, AGENT, OWNER"
+            validate="false">
+            <forward name="success" path="/restaurant_select_list.jsp"/>
+            <forward name="success_owner" path="/RestaurantSelectedListAction.do"/>
+    </action>    
+    <action path="/RestaurantSelectedListAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSelectedListAction"
+            name="RestaurantSelectListForm"
+            scope="session"
+            roles="ADMIN, AGENT, OWNER"
+            input="/restaurant_select_list.jsp"
+            validate="false">
+            <forward name="failure" path="/RestaurantSelectListAction.do"/>
+            <forward name="restaurant_information" path="/RestaurantB4InfoAction.do"/>
+            <forward name="subscription_management" path="/RestaurantSubscriptionAction.do"/>
+            <forward name="user_management" path="/RestaurantUserListAction.do"/>
+            <forward name="breakfast_specials" path="/SpecialsB4Action.do?modify_request=BREAKFAST"/>
+            <forward name="lunch_specials" path="/SpecialsB4Action.do?modify_request=LUNCH"/>
+            <forward name="happy_hour_specials" path="/SpecialsB4Action.do?modify_request=HAPPYHOUR"/>
+            <forward name="dinner_specials" path="/SpecialsB4Action.do?modify_request=DINNER"/>
+            <forward name="coupons_management" path="/RestaurantCouponsB4Action.do"/>
+            <forward name="events_management" path="/RestaurantEventsB4Action.do"/>
+    </action>    
+    
+    <action path="/RestaurantB4InfoAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantB4InfoAction"
+            name="RestaurantListForm"
+            scope="request"
+            roles="ADMIN, AGENT, OWNER"
+            validate="false">
+            <forward name="success" path="/restaurant_information.jsp"/>
+            <forward name="failure" path="/RestaurantSelectListAction.do"/>
+    </action>    
+    <action path="/RestaurantInfoAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantInfoAction" 
+            name="RestaurantListForm" 
+            input="/restaurant_information.jsp" 
+            scope="request"
+            roles="ADMIN, AGENT, OWNER"
+            validate="true">
+      <forward name="success" path="/RestaurantB4InfoAction.do"/>
+      <forward name="failure" path="/restaurant_information.jsp"/>
+      <forward name="failure_no_restaurant_tbl_pk" path="/RestaurantSelectListAction.do"/>
+    </action>
+    
+    <action path="/RestaurantSubscriptionAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSubscriptionAction"
+            name="RestaurantSubscriptionForm"
+            scope="request"
+            roles="ADMIN,AGENT"
+            validate="false">
+            <forward name="success" path="/subscription_management.jsp"/>
+    </action>    
+    <action path="/RestaurantSubscriptionB4NewEditAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSubscriptionB4NewEditAction" 
+            name="RestaurantSubscriptionForm" 
+            scope="request"
+            roles="ADMIN,AGENT"
+            validate="false">
+      <forward name="success" path="/RestaurantSubscriptionAction.do"/>
+      <forward name="failure" path="/RestaurantSubscriptionAction.do"/>
+    </action>
+    <action path="/RestaurantSubscriptionNewEditAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSubscriptionNewEditAction" 
+            name="RestaurantSubscriptionForm" 
+            scope="request"
+            roles="ADMIN,AGENT"
+            input="/subscription_management.jsp"
+            validate="true">
+      <forward name="success" path="/RestaurantSubscriptionAction.do?reset=true"/>
+      <forward name="failure" path="/RestaurantSubscriptionAction.do"/>
+    </action>
+    <action path="/RestaurantSubscriptionDeleteAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSubscriptionDeleteAction" 
+            name="RestaurantSubscriptionForm" 
+            scope="request"
+            roles="ADMIN,AGENT"
+            input="/subscription_management.jsp"
+            validate="false">
+      <forward name="success" path="/RestaurantSubscriptionAction.do"/>
+      <forward name="failure" path="/RestaurantSubscriptionAction.do"/>
+    </action>
+    <action path="/RestaurantUserListAction" 
+            type="com.diningo.web.users.actions.RestaurantUserListAction"
+            name="RestaurantUserNewEditForm"
+            scope="request"
+            roles="ADMIN,AGENT"
+            validate="false">
+            <forward name="success" path="/restaurant_users.jsp"/>
+    </action>    
+    <action path="/RestaurantUserB4NewEditAction" 
+            type="com.diningo.web.users.actions.RestaurantUserB4NewEditAction"
+            name="RestaurantUserNewEditForm"
+            scope="request"
+            roles="ADMIN,AGENT"
+            validate="false">
+      <forward name="success" path="/RestaurantUserListAction.do"/>
+      <forward name="failure" path="/RestaurantUserListAction.do"/>
+    </action>
+    <action path="/RestaurantUserNewEditAction" 
+            type="com.diningo.web.users.actions.RestaurantUserNewEditAction"
+            name="RestaurantUserNewEditForm"
+            scope="request"
+            roles="ADMIN,AGENT"
+            input="/restaurant_users.jsp"
+            validate="true">
+      <forward name="success" path="/RestaurantUserListAction.do?reset=true"/>
+      <forward name="failure" path="/restaurant_users.jsp"/>
+    </action>
+    <action path="/RestaurantDeleteUserAction" 
+            type="com.diningo.web.users.actions.RestaurantDeleteUserAction"
+            name="RestaurantUserNewEditForm"
+            scope="request"
+            roles="ADMIN, AGENT"
+            input="/restaurant_users.jsp"
+            validate="false">
+      <forward name="success" path="/RestaurantUserListAction.do"/>
+      <forward name="failure" path="/RestaurantUserListAction.do"/>
+    </action>
+    <action path="/SpecialsB4Action" 
+            type="com.diningo.web.restaurant.actions.SpecialsB4Action"
+            name="RestaurantSpecialsForm"
+            scope="session"
+            roles="ADMIN, AGENT, OWNER"
+            validate="false">
+            <forward name="success" path="/restaurant_specials.jsp"/>
+    </action>    
+    <action path="/SpecialsAction" 
+            type="com.diningo.web.restaurant.actions.SpecialsAction"
+            name="RestaurantSpecialsForm"
+            scope="session"
+            parameter="method"
+            roles="ADMIN, AGENT, OWNER"
+            input="/restaurant_specials.jsp"
+            validate="true"
+            cancellable="true">
+      <forward name="success_save" path="/SpecialsB4Action.do?reset=true"/>
+      <forward name="success_cancel" path="/SpecialsB4Action.do?reset=true"/>
+      <forward name="success" path="/SpecialsB4Action.do"/>
+      <forward name="failure" path="/restaurant_specials.jsp"/>
+    </action>
+    <action path="/RestaurantCouponsB4Action" 
+            type="com.diningo.web.restaurant.actions.RestaurantCouponsB4Action"
+            name="RestaurantCouponsForm"
+            scope="request"
+            roles="ADMIN, AGENT, OWNER"
+            validate="false">
+            <forward name="success" path="/restaurant_coupons.jsp"/>
+    </action>    
+    <action path="/RestaurantCouponsAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantCouponsAction"
+            name="RestaurantCouponsForm"
+            scope="request"
+            parameter="method"
+            roles="ADMIN, AGENT, OWNER"
+            input="/restaurant_coupons.jsp"
+            validate="true"
+            cancellable="true">
+      <forward name="success_save" path="/RestaurantCouponsB4Action.do?reset=true"/>
+      <forward name="success_cancel" path="/RestaurantCouponsB4Action.do?reset=true"/>
+      <forward name="success" path="/RestaurantCouponsB4Action.do"/>
+      <forward name="failure" path="/restaurant_coupons.jsp"/>
+    </action>
+    <action path="/RestaurantEventsB4Action" 
+            type="com.diningo.web.restaurant.actions.RestaurantEventsB4Action"
+            name="RestaurantEventsForm"
+            scope="request"
+            roles="ADMIN, AGENT, OWNER"
+            validate="false">
+            <forward name="success" path="/restaurant_events.jsp"/>
+    </action>    
+    <action path="/RestaurantEventsAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantEventsAction"
+            name="RestaurantEventsForm"
+            scope="request"
+            parameter="method"
+            roles="ADMIN, AGENT, OWNER"
+            input="/restaurant_events.jsp"
+            validate="true"
+            cancellable="true">
+      <forward name="success_save" path="/RestaurantEventsB4Action.do?reset=true"/>
+      <forward name="success_cancel" path="/RestaurantEventsB4Action.do?reset=true"/>
+      <forward name="success" path="/RestaurantEventsB4Action.do"/>
+      <forward name="failure" path="/restaurant_events.jsp"/>
+    </action>
+
+    <action path="/SubscribeDinerB4Action" 
+            type="com.diningo.web.commons.actions.SubscribeDinerB4Action"
+            name="ExploreDinerForm"
+            scope="request"
+            roles="ADMIN, AGENT"
+            validate="false">
+            <forward name="success" path="/subscribe_diner.jsp"/>
+            <forward name="failure" path="/subscribe_diner.jsp"/>
+    </action>    
+    <action path="/SubscribeDinerAction" 
+            type="com.diningo.web.commons.actions.SubscribeDinerAction" 
+            name="ExploreDinerForm" 
+            input="/subscribe_diner.jsp" 
+            scope="request"
+            roles="ADMIN, AGENT"
+            validate="true">
+      <forward name="success" path="/SubscribeDinerB4Action.do"/>
+      <forward name="failure" path="/subscribe_diner.jsp"/>
+    </action>
+    <action path="/SubscribeDinerMassAction" 
+            type="com.diningo.web.commons.actions.SubscribeDinerMassAction" 
+            name="ExploreDinerForm" 
+            scope="request"
+            roles="ADMIN"
+            validate="false">
+      <forward name="success" path="/Mass_Upload_Status.jsp"/>
+      <forward name="failure" path="/Mass_Upload_Status.jsp"/>
+    </action>
+
+  </action-mappings>
+
+  <!-- Created to make sure that only authorized users access authorized pages -->
+  <controller processorClass="com.diningo.web.action.diningoRequestProcessor"/>
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="com.diningo.resources.ApplicationResources" />
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml,
+                                              /WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

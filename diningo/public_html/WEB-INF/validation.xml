@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE form-validation PUBLIC
+         "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+         "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+	<global>
+		<!-- Custom Validator -->
+		<validator name="twofields" 
+                   classname="examples.validator.CustomValidator" 
+                   method="validateTwoFields" 
+                   methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionMessages,
+                       javax.servlet.http.HttpServletRequest" 
+                   msg="errors.twofields" />
+                <constant>
+                  <constant-name>zip</constant-name>
+                  <constant-value>^\d{5}(-\d{4})?$</constant-value>
+                </constant>
+                <constant>
+                  <constant-name>phone</constant-name>
+                  <constant-value>^\d{3}[-]\d{3}[-]\d{4}$</constant-value>
+                </constant>
+	</global>
+
+	<formset>
+                <form name="LoginForm">
+                  <field property="txtUserId" depends="required,email,maxlength">
+                    <arg position="0" key="LoginForm.txtUserId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="required,maxlength">
+                    <arg position="0" key="LoginForm.txtPassword.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="RestaurantListForm">
+                  <field property="txtName" depends="required,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtAddress1" depends="required,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtAddress1.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCity" depends="required,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtCity.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtStateTblFk" depends="required">
+                    <arg position="0" key="RestaurantListForm.txtStateTblFk.displayname"/>
+                  </field>
+                  <field property="txtZipcode" depends="required,mask">
+                    <msg name="mask" key="RestaurantListForm.txtZipcode.maskmsg"/>
+                    <arg position="0" key="RestaurantListForm.txtZipcode.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${zip}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPhoneNo" depends="required,mask">
+                    <arg position="0" key="RestaurantListForm.txtPhoneNo.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtFaxNo" depends="mask">
+                    <arg position="0" key="RestaurantListForm.txtFaxNo.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtWebsite" depends="url,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtWebsite.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>300</var-value>
+                    </var>
+                  </field>
+                  <field property="txtMenuUrl" depends="url,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtMenuUrl.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>300</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEntertainmentUrl" depends="url,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtEntertainmentUrl.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>300</var-value>
+                    </var>
+                  </field>
+                  <field property="txtVideoUrl" depends="url,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtVideoUrl.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>300</var-value>
+                    </var>
+                  </field>
+                  <field property="txtMapUrl" depends="url,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtMapUrl.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>300</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact1_name" depends="required,maxlength">
+                    <arg position="0" key="RestaurantListForm.txtContact1_name.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact1_phone" depends="required,mask">
+                    <arg position="0" key="RestaurantListForm.txtContact1_phone.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact1_email" depends="required,email">
+                    <arg position="0" key="RestaurantListForm.txtContact1_email.displayname"/>
+                  </field>
+                  <field property="txtContact2_phone" depends="mask">
+                    <arg position="0" key="RestaurantListForm.txtContact2_phone.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact2_email" depends="email">
+                    <arg position="0" key="RestaurantListForm.txtContact2_email.displayname"/>
+                  </field>
+                  <field property="txtContact3_phone" depends="mask">
+                    <arg position="0" key="RestaurantListForm.txtContact3_phone.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact3_email" depends="email">
+                    <arg position="0" key="RestaurantListForm.txtContact3_email.displayname"/>
+                  </field>
+                  <field property="txtContact4_phone" depends="mask">
+                    <arg position="0" key="RestaurantListForm.txtContact4_phone.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtContact4_email" depends="email">
+                    <arg position="0" key="RestaurantListForm.txtContact4_email.displayname"/>
+                  </field>
+                </form>
+                <form name="RestaurantSubscriptionForm">
+                  <field property="txtFromDate" depends="required,date">
+                    <arg position="0" key="RestaurantSubscriptionForm.txtFromDate.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtToDate" depends="required,date,validwhen">
+                    <arg position="0" key="RestaurantSubscriptionForm.txtToDate.displayname"/>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>(*this* >= txtFromDate )</var-value>
+                    </var>
+                  </field>
+                  <field property="cboSubscription" depends="required">
+                    <arg position="0" key="RestaurantSubscriptionForm.cboSubscription.displayname"/>
+                  </field>
+                  <field property="txtSubscriptionFee" depends="mask">
+                    <arg position="0" key="RestaurantSubscriptionForm.txtSubscriptionFee.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>^\d{1,3}(,?\d{3})*\.?(\d{1,2})?$</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="RestaurantUserNewEditForm">
+                  <field property="txtUserName" depends="required,maxlength">
+                    <arg position="0" key="RestaurantUserNewEditForm.txtUserName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtUserId" depends="required,email,maxlength">
+                    <arg position="0" key="RestaurantUserNewEditForm.txtUserId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="required,minlength,twofields">
+		    <arg key="RestaurantUserNewEditForm.txtPassword.displpayname" position="0"/>
+		    <arg name="minlength" key="${var:minlength}" resource="false"  position="1"/>
+		    <arg name="twofields" key="RestaurantUserNewEditForm.txtConfirmPassword.displpayname"  position="1"/>
+		    <var>
+			<var-name>minlength</var-name>
+			<var-value>5</var-value>
+		    </var>
+		    <var>
+			<var-name>secondProperty</var-name>
+			<var-value>txtConfirmPassword</var-value>
+		    </var>
+		  </field>
+                  <field property="txtPhoneNo" depends="required,mask">
+                    <arg position="0" key="RestaurantUserNewEditForm.txtPhoneNo.displpayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEmailAddress" depends="required,email,maxlength">
+                    <arg position="0" key="RestaurantUserNewEditForm.txtEmailAddress.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="RestaurantSpecialsForm">
+                  <field property="txtSpecialsDate" depends="validwhen,date">
+                    <arg position="0" key="RestaurantSpecialsForm.txtSpecialsDate.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((method != 'Save') or (*this* != null))</var-value>
+                    </var>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                  </field>
+                  <field property="cboTemplateTblPk" depends="validwhen">
+                    <arg position="0" key="RestaurantSpecialsForm.cboTemplateTblPk.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((method != 'SaveAsDefault') or (*this* != null))</var-value>
+                    </var>
+                  </field>
+                  <field property="txtSpecialsMenu" depends="validwhen,maxlength">
+                    <arg position="0" key="RestaurantSpecialsForm.txtSpecialsMenu.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((((method != 'SaveAsDefault') and (method != 'Save')) and (method != 'Preview')) or (*this* != null))</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>1000</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="RestaurantCouponsForm">
+                  <field property="txtCouponsName" depends="validwhen,maxlength">
+                    <arg position="0" key="RestaurantCouponsForm.txtCouponsName.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>(((method != 'Save') and (method != 'Preview')) or (*this* != null))</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCouponDescription" depends="validwhen,maxlength">
+                    <arg position="0" key="RestaurantCouponsForm.txtCouponDescription.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>(((method != 'Save') and (method != 'Preview')) or (*this* != null))</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>1000</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCouponFromEffDate" depends="validwhen,date">
+                    <arg position="0" key="RestaurantCouponsForm.txtCouponFromEffDate.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>(((method != 'Save') and (method != 'Preview')) or (*this* != null))</var-value>
+                    </var>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCouponToEffDate" depends="validwhen,date">
+                    <arg position="0" key="RestaurantCouponsForm.txtCouponToEffDate.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>(((method != 'Save') and (method != 'Preview')) or (*this* != null))</var-value>
+                    </var>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>( *this* >= txtCouponFromEffDate )</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="RestaurantEventsForm">
+                  <field property="txtEventName" depends="validwhen,maxlength">
+                    <arg position="0" key="RestaurantEventsForm.txtEventName.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((method != 'Save') or (*this* != null))</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEventDescription" depends="validwhen,maxlength">
+                    <arg position="0" key="RestaurantEventsForm.txtEventDescription.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((method != 'Save') or (*this* != null))</var-value>
+                    </var>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>1000</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEventEffDate" depends="validwhen,date">
+                    <arg position="0" key="RestaurantEventsForm.txtEventEffDate.displayname"/>
+                    <var>
+                      <var-name>test</var-name>
+                      <var-value>((method != 'Save') or (*this* != null))</var-value>
+                    </var>
+                    <var>
+                      <var-name>datePattern</var-name>
+                      <var-value>yyyy/MM/dd</var-value>
+                    </var>
+                  </field>
+                </form>
+                <form name="AgentForm">
+                  <field property="txtName" depends="required,maxlength">
+                    <arg position="0" key="AgentForm.txtName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtUserId" depends="required,email,maxlength">
+                    <arg position="0" key="AgentForm.txtUserId.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPassword" depends="required,minlength,twofields">
+		    <arg key="AgentForm.txtPassword.displpayname" position="0"/>
+		    <arg name="minlength" key="${var:minlength}" resource="false"  position="1"/>
+		    <arg name="twofields" key="AgentForm.txtConfirmPassword.displpayname"  position="1"/>
+		    <var>
+			<var-name>minlength</var-name>
+			<var-value>5</var-value>
+		    </var>
+		    <var>
+			<var-name>secondProperty</var-name>
+			<var-value>txtConfirmPassword</var-value>
+		    </var>
+		  </field>
+                  <field property="txtAddress1" depends="required,maxlength">
+                    <arg position="0" key="AgentForm.txtAddress1.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCity" depends="required,maxlength">
+                    <arg position="0" key="AgentForm.txtCity.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtStateTblFk" depends="required">
+                    <arg position="0" key="AgentForm.txtStateTblFk.displayname"/>
+                  </field>
+                  <field property="txtZipcode" depends="required,mask">
+                    <arg position="0" key="AgentForm.txtZipcode.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${zip}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtPhoneNo" depends="required,mask">
+                    <arg position="0" key="AgentForm.txtPhoneNo.displayname"/>
+                    <var>
+                      <var-name>mask</var-name>
+                      <var-value>${phone}</var-value>
+                    </var>
+                  </field>
+                  <field property="txtEmailAddress" depends="required,email,maxlength">
+                    <arg position="0" key="AgentForm.txtEmailAddress.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+	        <form name="CategoryForm">
+                  <field property="txtCategoryName" depends="required,maxlength">
+                    <arg position="0" key="CategoryForm.txtCategoryName.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                  <field property="txtCategoryDesc" depends="required,maxlength">
+                    <arg position="0" key="CategoryForm.txtCategoryDesc.displayname"/>
+                    <arg position="1" name="maxlength" key="${var:maxlength}" resource="false"/>
+                    <var>
+                      <var-name>maxlength</var-name>
+                      <var-value>50</var-value>
+                    </var>
+                  </field>
+                </form>
+        </formset>
+</form-validation>

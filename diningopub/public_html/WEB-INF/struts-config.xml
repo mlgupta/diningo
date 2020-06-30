@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <form-beans>
+     <form-bean name="ContactUsForm"                type="com.diningo.web.commons.actionforms.ContactUsForm"/>
+     <form-bean name="ExploreDinerForm"             type="com.diningo.web.commons.actionforms.ExploreDinerForm"/>
+     <form-bean name="ExploreOwnerForm"             type="com.diningo.web.commons.actionforms.ExploreOwnerForm"/>     
+     <form-bean name="RestaurantSearchForm"         type="com.diningo.web.restaurant.actionforms.RestaurantSearchForm"/>     
+     <form-bean name="DinersCouponsForm"            type="com.diningo.web.restaurant.actionforms.DinersCouponsForm"/>     
+     <form-bean name="PrintCouponForm"              type="com.diningo.web.restaurant.actionforms.PrintCouponForm"/>          
+     <form-bean name="DinersEventsForm"            type="com.diningo.web.restaurant.actionforms.DinersEventsForm"/>     
+ </form-beans>
+  
+  <global-forwards>
+    <forward name="welcome" path="/index.html"/>
+  </global-forwards>
+  
+  <action-mappings>
+    <action path="/ContactUsB4Action"
+            type="com.diningo.web.commons.actions.ContactUsB4Action"
+            name="ContactUsForm"
+            scope="request"
+            validate="false">
+            <forward name="success" path="/contact_us.jsp"/>
+    </action>
+    <action path="/ContactUsAction" 
+            type="com.diningo.web.commons.actions.ContactUsAction" 
+            name="ContactUsForm" 
+            input="/contact_us.jsp" 
+            scope="request"
+            validate="true">
+      <forward name="success" path="/thanks_feedback.html"/>
+      <forward name="failure" path="/contact_us.jsp"/>
+    </action>
+    <action path="/ExploreDinerB4Action" 
+            name="ExploreDinerForm" 
+            type="com.diningo.web.commons.actions.ExploreDinerB4Action"
+            scope="request"
+            validate="false">
+            <forward name="success" path="/explore_diner.jsp"/>
+    </action>
+    <action path="/ExploreDinerAction" 
+            type="com.diningo.web.commons.actions.ExploreDinerAction" 
+            name="ExploreDinerForm" 
+            input="/explore_diner.jsp" 
+            scope="request"
+            validate="true">
+      <forward name="success" path="/thanks.html"/>
+      <forward name="failure" path="/explore_diner.jsp"/>
+    </action>
+    <action path="/DinerSubscribeConfirmAction" 
+            type="com.diningo.web.commons.actions.DinerSubscribeConfirmAction" 
+            name="ExploreDinerForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/thanks_confirm.html"/>
+      <forward name="failure" path="/error_confirm.html"/>
+    </action>
+    <action path="/DinerUnsubscribeAction" 
+            type="com.diningo.web.commons.actions.DinerUnsubscribeAction" 
+            name="ExploreDinerForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/confirm_unsubscribe.html"/>
+      <forward name="failure" path="/error_unsubscribe.html"/>
+    </action>  
+    <action path="/DinerSuspendAction" 
+            type="com.diningo.web.commons.actions.DinerSuspendAction" 
+            name="ExploreDinerForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/confirm_unsubscribe.html"/>
+      <forward name="failure" path="/error_unsubscribe.html"/>
+    </action>  
+    <action path="/ExploreDinerUnsubscribeAction" 
+            type="com.diningo.web.commons.actions.ExploreDinerUnsubscribeAction" 
+            name="ExploreDinerForm" 
+            input="/explore_diner.jsp" 
+            scope="request"
+            validate="true">
+      <forward name="success" path="/confirm_unsubscribe.html"/>
+      <forward name="failure" path="/explore_diner.jsp"/>
+    </action>  
+    <action path="/ExploreOwnerB4Action" 
+            name="ExploreOwnerForm" 
+            type="com.diningo.web.commons.actions.ExploreOwnerB4Action"
+            scope="request"
+            validate="false">
+            <forward name="success" path="/explore_owner.jsp"/>
+    </action>
+    <action path="/ExploreOwnerAction" 
+            type="com.diningo.web.commons.actions.ExploreOwnerAction" 
+            name="ExploreOwnerForm" 
+            input="/explore_owner.jsp" 
+            scope="request"
+            validate="true">
+      <forward name="success" path="/thanks_feedback.html"/>
+      <forward name="failure" path="/explore_owner.jsp"/>
+    </action>
+    <action path="/RestaurantSearchListAction" 
+            type="com.diningo.web.restaurant.actions.RestaurantSearchListAction" 
+            name="RestaurantSearchForm" 
+            input="/restaurant_search.jsp" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/restaurant_search.jsp"/>
+    </action>    
+    <action path="/DinersCouponsListAction" 
+            type="com.diningo.web.restaurant.actions.DinersCouponsListAction" 
+            name="DinersCouponsForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/diners_coupons.jsp"/>
+    </action>
+    <action path="/DinersCouponsPrintAction" 
+            type="com.diningo.web.restaurant.actions.DinersCouponsPrintAction" 
+            name="PrintCouponForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/print_coupons.jsp"/>
+    </action>    
+    <action path="/DinersEventsListAction" 
+            type="com.diningo.web.restaurant.actions.DinersEventsListAction" 
+            name="DinersEventsForm" 
+            scope="request"
+            validate="false">
+      <forward name="success" path="/diners_events.jsp"/>
+    </action>
+  </action-mappings>
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="com.diningo.resources.ApplicationResources" />
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules.xml,
+                                              /WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

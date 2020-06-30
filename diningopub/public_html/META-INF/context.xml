@@ -1,0 +1,9 @@
+<Context path="/diningopub" docBase="${catalina.home}/webapps/diningopub"
+   crossContext="true" reloadable="true" debug="1">
+
+<Resource name="jdbc/DBConnection1DS" auth="Container"
+          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://127.0.0.1/diningo"
+          username="diningo" password="diningo" maxActive="20" maxIdle="10"
+maxWait="-1"/>
+</Context>
